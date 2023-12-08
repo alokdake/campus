@@ -1,0 +1,288 @@
+<div>
+  <nav
+    style="font-family: cursive; font-size: larger"
+    class="navbar navbar-expand-lg navbar-dark bg-dark"
+  >
+    <a routerLink="/userprofile" style="cursor: pointer" class="navbar-brand"
+      >logged by <b> Admin </b>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li style="cursor: pointer" class="nav-item active">
+          <a style="color: white" routerLink="/allstudents" class="nav-link"
+            >Home
+          </a>
+        </li>
+        <li style="cursor: pointer" class="nav-item active">
+          <a style="color: white" routerLink="/register" class="nav-link"
+            >Register
+          </a>
+        </li>
+        <li style="cursor: pointer" class="nav-item active">
+          <a style="color: white" routerLink="/login" class="nav-link">Login</a>
+        </li>
+        <li style="cursor: pointer" class="nav-item active">
+          <a logout() style="color: white" class="nav-link">Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<div class="login-page">
+  <div class="form">
+    <h2><b>Edit Student Details</b></h2>
+    <br />
+    <div *ngIf="singleUserDetails" style="text-align: center">
+      <div style="text-align: center">
+        <div *ngIf="message">
+          {{ message }}
+        </div>
+        <div>
+          <img
+            style="
+              height: 80px;
+              width: 80px;
+              border-radius: 50%;
+              border: 4px solid #4caf50;
+            "
+            [src]="singleUserDetails.profilePic"
+            *ngIf="singleUserDetails.profilePic"
+          />
+        </div>
+        <div>
+          <label class="file">
+            <input
+              type="file"
+              id="file"
+              (change)="selectFile($event)"
+              aria-label="File browser example"
+            />
+
+            <span class="file-custom"></span>
+          </label>
+        </div>
+      </div>
+
+      <form class="Register-form">
+        <div class="form-group">
+          <div>
+            <div class="row">
+
+              <div class="col">
+                <div class="form-group">
+                  <input
+                    [(ngModel)]="singleUserDetails.name"
+                    [ngModelOptions]="{ standalone: true }"
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter your full name *"
+                  />
+                </div>
+              </div>
+
+
+              <div class="col">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input
+                      [(ngModel)]="singleUserDetails.uname"
+                      type="text"
+                      [ngModelOptions]="{ standalone: true }"
+                      placeholder="User Name *"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col">
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  [(ngModel)]="singleUserDetails.phone"
+                  type="number"
+                  [ngModelOptions]="{ standalone: true }"
+                  class="form-control"
+                  placeholder="Enter Your Phone No. *"
+                />
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col">
+            <div class="form-group">
+              <input
+                [(ngModel)]="singleUserDetails.email"
+                type="text"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control"
+                placeholder="Enter Your Email *"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col">
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  [(ngModel)]="singleUserDetails.branch"
+                  type="text"
+                  [ngModelOptions]="{ standalone: true }"
+                  class="form-control"
+                  placeholder="Enter Your Branch *"
+                />
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col">
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  [(ngModel)]="singleUserDetails.enrollmentno"
+                  type="text"
+                  [ngModelOptions]="{ standalone: true }"
+                  class="form-control"
+                  placeholder="Enter Your Enrollment No. *"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  [(ngModel)]="singleUserDetails.rollno"
+                  type="text"
+                  [ngModelOptions]="{ standalone: true }"
+                  class="form-control"
+                  placeholder="Enter Your Roll No. *"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  [(ngModel)]="singleUserDetails.bloodgroup"
+                  type="text"
+                  [ngModelOptions]="{ standalone: true }"
+                  class="form-control"
+                  placeholder="Enter Your Blood Group *"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-group">
+            <div class="input-group">
+              <textarea
+                [(ngModel)]="singleUserDetails.address"
+                type="text"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control"
+                placeholder="Enter Your Address *"
+              ></textarea>
+
+            </div>
+          </div>
+        </div>
+        <br />
+
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  [(ngModel)]="singleUserDetails.pincode"
+                  type="text"
+                  [ngModelOptions]="{ standalone: true }"
+                  class="form-control"
+                  placeholder="Enter Your Pin Code *"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  [(ngModel)]="singleUserDetails.city"
+                  type="text"
+                  [ngModelOptions]="{ standalone: true }"
+                  class="form-control"
+                  placeholder="Enter Your City *"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col">
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  [(ngModel)]="singleUserDetails.password"
+                  type="password"
+                  [ngModelOptions]="{ standalone: true }"
+                  placeholder="Password *"
+                  id="form3Example4cg"
+                  class="form-control form-control-lg"
+                />
+              </div>
+            </div>
+          </div>
+
+         
+          <div class="col">
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  [(ngModel)]="singleUserDetails.conformPassword"
+                  type="password"
+                  [ngModelOptions]="{ standalone: true }"
+                  placeholder="Confirm Password *"
+                  id="form3Example4cdg"
+                  class="form-control form-control-lg"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" (click)="update()">Update Details</button>
+      </form>
+    </div>
+  </div>
+</div>

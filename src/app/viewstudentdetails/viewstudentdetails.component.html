@@ -1,0 +1,86 @@
+<div>
+  <nav
+    style="font-family: cursive; font-size: larger"
+    class="navbar navbar-expand-lg navbar-dark bg-dark"
+  >
+    <a routerLink="/userprofile" style="cursor: pointer" class="navbar-brand"
+      >logged by <b> {{ loggedInUserName }} </b>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li style="cursor: pointer" class="nav-item active">
+          <a style="color: white" routerLink="/allstudents" class="nav-link"
+            >All Students
+          </a>
+        </li>
+        <li style="cursor: pointer" class="nav-item active">
+          <a style="color: white" routerLink="/register" class="nav-link"
+            >Register
+          </a>
+        </li>
+        <li style="cursor: pointer" class="nav-item active">
+          <a style="color: white" routerLink="/login" class="nav-link">Login</a>
+        </li>
+        <li style="cursor: pointer" class="nav-item active">
+          <a style="color: white" routerLink="/login" class="nav-link">Admin</a>
+        </li>
+        <li style="cursor: pointer" class="nav-item active">
+          <a (click)="logout()" style="color: white" class="nav-link">Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<body>
+  <div class="container">
+    <div class="card-container">
+      <div *ngFor="let data of studentdata" class="card">
+        <img src="{{ data.profilePic }}" class="card__image" alt="img" />
+
+        <div style="margin-top: 125px !important" class="card__content">
+          <div class="card__title">
+            <h1>
+              <b
+                ><u>{{ data.name | titlecase }}</u></b
+              >
+            </h1>
+          </div>
+          <div class="card__title">
+            <h4>Branch: {{ data.branch }}</h4>
+          </div>
+          <div class="card__title">
+            <h4>Enrollment No: {{ data.enrollmentno }}</h4>
+          </div>
+          <div class="card__title">
+            <h4>Roll No: {{ data.rollno }}</h4>
+          </div>
+          <div class="card__title">
+            <h4>Blood Group: {{ data.bloodgroup }}</h4>
+          </div>
+          <div
+            style="height: 336px !important; overflow: auto"
+            class="card__date"
+          >
+            <h4>{{ data.address }} - {{ data.city }} - {{ data.pincode }}</h4>
+            <h4>Email: {{ data.email }}</h4>
+            <h4>Mobile: {{ data.phone }}</h4>
+          </div>
+
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

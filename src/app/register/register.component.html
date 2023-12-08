@@ -1,0 +1,516 @@
+<div class="login-page">
+  <div class="form">
+    <h2><b>Register</b></h2>
+    <br />
+    <div style="text-align: center">
+      <div style="text-align: center">
+        <div *ngIf="message">
+          {{ message }}
+        </div>
+        <div>
+          <img
+            style="
+              height: 80px;
+              width: 80px;
+              border-radius: 50%;
+              border: 4px solid #000000;
+            "
+            [src]="profilePic"
+            *ngIf="profilePic"
+          />
+        </div>
+        <div>
+          <label class="file">
+            <input
+              type="file"
+              id="file"
+              (change)="selectFile($event)"
+              aria-label="File browser example"
+            />
+            <div
+              style="width: max-content"
+              class="form-text text-danger"
+              *ngIf="profile.errors?.['required'] && (profile.touched || profile.dirty) "
+            >
+              Profile is Requried.
+            </div>
+            <span class="file-custom"></span>
+          </label>
+        </div>
+      </div>
+
+      <form [formGroup]="RegisterForm" class="Register-form">
+        <div class="form-group">
+          <div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <input
+                    [(ngModel)]="name"
+                    type="text"
+                    formControlName="name"
+                    class="form-control"
+                    placeholder="Enter your full name *"
+                    required
+                    [ngClass]="{
+                      'is-invalid':
+                        RegisterForm.get('name')?.touched &&
+                        RegisterForm.get('name')?.invalid
+                    }"
+                  />
+                  <div
+                    style="width: max-content; color: red"
+                    class="form-text text-danger"
+                    *ngIf="Name.errors?.['required'] && (Name.touched || Name.dirty)"
+                  >
+                    Name is Required.
+                  </div>
+
+                  <div
+                    style="width: max-content; color: red"
+                    class="form-text text-danger"
+                    *ngIf="Name.errors?.['name'] && (Name.touched || Name.dirty)"
+                  >
+                    Name is Invalid.
+                  </div>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input
+                      [(ngModel)]="uname"
+                      type="text"
+                      formControlName="uname"
+                      placeholder="User Name *"
+                      id="form3Example1cg"
+                      class="form-control form-control-lg"
+                      [ngClass]="{
+                        'is-invalid':
+                          RegisterForm.get('uname')?.touched &&
+                          RegisterForm.get('uname')?.invalid
+                      }"
+                    />
+                    <div
+                      style="width: max-content; color: red"
+                      class="form-text text-danger"
+                      *ngIf="UName.errors?.['required'] && (UName.touched || UName.dirty) "
+                    >
+                      User Name is Required.
+                    </div>
+
+                    <div
+                      style="width: max-content; color: red"
+                      class="form-text text-danger"
+                      *ngIf="UName.errors?.['minlength'] && (UName.touched || UName.dirty) "
+                    >
+                      User Name is too short.
+                    </div>
+
+                    <div
+                      style="width: max-content; color: red"
+                      class="form-text text-danger"
+                      *ngIf="UName.errors?.['pattern'] && (UName.dirty || UName.touched) "
+                    >
+                      User Name should start with Alphabet.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  [(ngModel)]="phone"
+                  type="number"
+                  formControlName="phone"
+                  class="form-control"
+                  placeholder="Enter Your Phone No. *"
+                  required
+                  [ngClass]="{
+                    'is-invalid':
+                      RegisterForm.get('phone')?.touched &&
+                      RegisterForm.get('phone')?.invalid
+                  }"
+                />
+                <div
+                  style="width: max-content; color: red"
+                  class="form-text text-danger"
+                  *ngIf="Phone.errors?.['required'] && (Phone.touched || Phone.dirty)"
+                >
+                  Phone No. is Required.
+                </div>
+
+                <div
+                  style="width: max-content; color: red"
+                  class="form-text text-danger"
+                  *ngIf="Phone.errors?.['phone'] && (Phone.touched || Phone.dirty)"
+                >
+                  Phone No. is Invalid.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="form-group">
+              <input
+                [(ngModel)]="email"
+                type="text"
+                formControlName="email"
+                class="form-control"
+                placeholder="Enter Your Email *"
+                required
+                [ngClass]="{
+                  'is-invalid':
+                    RegisterForm.get('email')?.touched &&
+                    RegisterForm.get('email')?.invalid
+                }"
+              />
+              <div
+                style="width: max-content; color: red"
+                class="form-text text-danger"
+                *ngIf="Email.errors?.['required'] && (Email.touched || Email.dirty)"
+              >
+                Email is Required.
+              </div>
+
+              <div
+                style="width: max-content; color: red"
+                class="form-text text-danger"
+                *ngIf="Email.errors?.['email'] && (Email.touched || Email.dirty)"
+              >
+                Email is Invalid.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  [(ngModel)]="branch"
+                  type="text"
+                  formControlName="branch"
+                  class="form-control"
+                  placeholder="Enter Your Branch *"
+                  required
+                  [ngClass]="{
+                    'is-invalid':
+                      RegisterForm.get('branch')?.touched &&
+                      RegisterForm.get('branch')?.invalid
+                  }"
+                />
+                <div
+                  style="width: max-content; color: red"
+                  class="form-text text-danger"
+                  *ngIf="Branch.errors?.['required'] && (Branch.touched || Branch.dirty)"
+                >
+                  Branch is Required.
+                </div>
+
+                <div
+                  style="width: max-content; color: red"
+                  class="form-text text-danger"
+                  *ngIf="Branch.errors?.['branch'] && (Branch.touched || Branch.dirty)"
+                >
+                  Branch is Invalid.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  [(ngModel)]="enrollmentno"
+                  type="text"
+                  formControlName="enrollmentno"
+                  class="form-control"
+                  placeholder="Enter Your Enrollment No. *"
+                  required
+                  [ngClass]="{
+                    'is-invalid':
+                      RegisterForm.get('enrollmentno')?.touched &&
+                      RegisterForm.get('enrollmentno')?.invalid
+                  }"
+                />
+                <div
+                  style="width: max-content; color: red"
+                  class="form-text text-danger"
+                  *ngIf="Enrollment.errors?.['required'] && (Enrollment.touched || Enrollment.dirty)"
+                >
+                  Enrollment No. is Required.
+                </div>
+
+                <div
+                  style="width: max-content; color: red"
+                  class="form-text text-danger"
+                  *ngIf="Enrollment.errors?.['enrollmentno'] && (Enrollment.touched || Enrollment.dirty)"
+                >
+                  Enrollment No. is Invalid.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  [(ngModel)]="rollno"
+                  type="text"
+                  formControlName="rollno"
+                  class="form-control"
+                  placeholder="Enter Your Roll No. *"
+                  required
+                  [ngClass]="{
+                    'is-invalid':
+                      RegisterForm.get('rollno')?.touched &&
+                      RegisterForm.get('rollno')?.invalid
+                  }"
+                />
+                <div
+                  style="width: max-content; color: red"
+                  class="form-text text-danger"
+                  *ngIf="Roll.errors?.['required'] && (Roll.touched || Roll.dirty)"
+                >
+                  Roll No. is Required.
+                </div>
+
+                <div
+                  style="width: max-content; color: red"
+                  class="form-text text-danger"
+                  *ngIf="Roll.errors?.['rollno'] && (Roll.touched || Roll.dirty)"
+                >
+                  Roll No. is Invalid.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  [(ngModel)]="bloodgroup"
+                  type="text"
+                  formControlName="bloodgroup"
+                  class="form-control"
+                  placeholder="Enter Your Blood Group *"
+                  required
+                  [ngClass]="{
+                    'is-invalid':
+                      RegisterForm.get('bloodgroup')?.touched &&
+                      RegisterForm.get('bloodgroup')?.invalid
+                  }"
+                />
+                <div
+                  style="width: max-content; color: red"
+                  class="form-text text-danger"
+                  *ngIf="Blood.errors?.['required'] && (Blood.touched || Blood.dirty)"
+                >
+                  Blood Group is Required.
+                </div>
+
+                <div
+                  style="width: max-content; color: red"
+                  class="form-text text-danger"
+                  *ngIf="Blood.errors?.['bloodgroup'] && (Blood.touched || Blood.dirty)"
+                >
+                  Blood Group is Invalid.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-group">
+            <div class="input-group">
+              <textarea
+                [(ngModel)]="address"
+                type="text"
+                formControlName="address"
+                class="form-control"
+                placeholder="Enter Your Address *"
+                required
+                [ngClass]="{
+                  'is-invalid':
+                    RegisterForm.get('address')?.touched &&
+                    RegisterForm.get('address')?.invalid
+                }"
+                name=""
+                id=""
+                cols="30"
+                rows="3"
+              ></textarea>
+
+              <div
+                style="width: max-content; color: red"
+                class="form-text text-danger"
+                *ngIf="Address.errors?.['required'] && (Address.touched || Address.dirty)"
+              >
+                Address is Required.
+              </div>
+
+              <div
+                style="width: max-content; color: red"
+                class="form-text text-danger"
+                *ngIf="Address.errors?.['address'] && (Address.touched || Address.dirty)"
+              >
+                Address is Invalid.
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  [(ngModel)]="pincode"
+                  type="text"
+                  formControlName="pincode"
+                  class="form-control"
+                  placeholder="Enter Your Pin Code *"
+                  required
+                  [ngClass]="{
+                    'is-invalid':
+                      RegisterForm.get('pincode')?.touched &&
+                      RegisterForm.get('pincode')?.invalid
+                  }"
+                />
+                <div
+                  style="width: max-content; color: red"
+                  class="form-text text-danger"
+                  *ngIf="Pin.errors?.['required'] && (Pin.touched || Pin.dirty)"
+                >
+                  Pin Code is Required.
+                </div>
+
+                <div
+                  style="width: max-content; color: red"
+                  class="form-text text-danger"
+                  *ngIf="Pin.errors?.['pincode'] && (Pin.touched || Pin.dirty)"
+                >
+                  Pin Code is Invalid.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  [(ngModel)]="city"
+                  type="text"
+                  formControlName="city"
+                  class="form-control"
+                  placeholder="Enter Your City *"
+                  required
+                  [ngClass]="{
+                    'is-invalid':
+                      RegisterForm.get('City')?.touched &&
+                      RegisterForm.get('City')?.invalid
+                  }"
+                />
+                <div
+                  style="width: max-content; color: red"
+                  class="form-text text-danger"
+                  *ngIf="City.errors?.['required'] && (City.touched || City.dirty)"
+                >
+                  City is Required.
+                </div>
+
+                <div
+                  style="width: max-content; color: red"
+                  class="form-text text-danger"
+                  *ngIf="City.errors?.['city'] && (City.touched || City.dirty)"
+                >
+                  City is Invalid.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  [(ngModel)]="password"
+                  type="password"
+                  formControlName="password"
+                  placeholder="Password *"
+                  id="form3Example4cg"
+                  class="form-control form-control-lg"
+                  required
+                  [ngClass]="{
+                    'is-invalid':
+                      RegisterForm.get('password')?.touched &&
+                      RegisterForm.get('password')?.invalid
+                  }"
+                />
+                <div
+                  style="width: max-content; color: red"
+                  class="form-text text-danger"
+                  *ngIf="pass.errors?.['required'] && (pass.touched || pass.dirty)"
+                >
+                  Password is Required.
+                </div>
+
+                <div
+                  style="width: max-content; color: red"
+                  class="form-text text-danger"
+                  *ngIf="pass.errors?.['minlength'] && (pass.dirty || pass.touched)"
+                >
+                  Password should be at least 6 characters long.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  [(ngModel)]="conformPassword"
+                  type="password"
+                  formControlName="conformPassword"
+                  placeholder="Confirm Password *"
+                  id="form3Example4cdg"
+                  class="form-control form-control-lg"
+                  required
+                  [ngClass]="{
+                    'is-invalid':
+                      RegisterForm.get('conformPassword')?.touched &&
+                      RegisterForm.get('conformPassword')?.invalid
+                  }"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" (click)="submitform()">Register</button>
+        <p class="message">Already Have account? <a href="/login">Login</a></p>
+      </form>
+    </div>
+  </div>
+</div>
