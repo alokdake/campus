@@ -9,6 +9,8 @@ import { AdminComponent } from './admin/admin.component';
 import { EditstudentdetailsbyadminComponent } from './editstudentdetailsbyadmin/editstudentdetailsbyadmin.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'allstudents', component: AllstudentsComponent },
